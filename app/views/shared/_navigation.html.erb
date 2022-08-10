@@ -77,7 +77,7 @@
             <% end %>
           </div>
           <div class="col">
-            <%= link_to "#", class:"btn btn-sm btn-primary", data: { turbo_method: :delete } do %>
+            <%= link_to destroy_user_session_path, class:"btn btn-sm btn-primary", data: { turbo_method: :delete } do %>
               <i class="bi bi-box-arrow-left"></i>
               Cerrar sesión
             <% end %>
