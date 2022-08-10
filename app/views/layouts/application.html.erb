@@ -11,14 +11,12 @@
   </head>
   <body class="d-flex flex-column">
     <%= render "shared/navigation" %>
-
     <div id="page-content" class="row justify-content-md-center">
       <div class="col-md-8 mt-5">
         <%= render "shared/devise_alerts" %>
         <%= yield %>
       </div>
     </div>
-
     <%= render "shared/footer" %>
   </body>
 </html>

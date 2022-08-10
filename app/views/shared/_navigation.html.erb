@@ -5,98 +5,97 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <%# IF USER EVALUATION %>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Proyectos
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li>
-              <%= link_to new_project_path, class:"dropdown-item" do %>
-                <i class="bi bi-journal-plus"></i>
-                Agregar nuevo proyecto
-              <% end %>
-            </li>
-            <li>
-              <%= link_to projects_path, class:"dropdown-item" do %>
-                <i class="bi bi-journal"></i>
-                Listar proyectos
-              <% end %>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Investigadores
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li>
-              <%= link_to new_investigator_path, class:"dropdown-item" do %>
-                <i class="bi bi-person-plus"></i>
-                <span>Agregar nuevo investigador</span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to investigators_path, class:"dropdown-item" do %>
-                <i class="bi bi-person"></i>
-                <span>Listar investigadores</span>
-              <% end %>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Actas
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li>
-              <%= link_to "#", class:"dropdown-item" do %>
-                <i class="bi bi-person-plus"></i>
-                <span>Agregar nueva acta</span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#", class:"dropdown-item" do %>
-                <i class="bi bi-person"></i>
-                <span>Listar actas</span>
-              <% end %>
-            </li>
-          </ul>
-        </li>
+      <% if current_user %>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Proyectos
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <%= link_to new_project_path, class:"dropdown-item" do %>
+                  <i class="bi bi-journal-plus"></i>
+                  Agregar nuevo proyecto
+                <% end %>
+              </li>
+              <li>
+                <%= link_to projects_path, class:"dropdown-item" do %>
+                  <i class="bi bi-journal"></i>
+                  Listar proyectos
+                <% end %>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Investigadores
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <%= link_to new_investigator_path, class:"dropdown-item" do %>
+                  <i class="bi bi-person-plus"></i>
+                  <span>Agregar nuevo investigador</span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to investigators_path, class:"dropdown-item" do %>
+                  <i class="bi bi-person"></i>
+                  <span>Listar investigadores</span>
+                <% end %>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Actas
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <%= link_to "#", class:"dropdown-item" do %>
+                  <i class="bi bi-person-plus"></i>
+                  <span>Agregar nueva acta</span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to "#", class:"dropdown-item" do %>
+                  <i class="bi bi-person"></i>
+                  <span>Listar actas</span>
+                <% end %>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </ul>
-    </ul>
-    <%# IF END %>
-    <%# IF USER EVALUATION %>
-    <form class="d-flex">
-      <div class="row">
-        <div class="col">
-          <%= link_to "#", class:"btn btn-sm btn-primary", style: "width:160px" do %>
-            <i class="bi bi-person"></i>
-            Administrar cuenta
-          <% end %>
+    <% end %>
+    <% if current_user %>
+      <form class="d-flex">
+        <div class="row">
+          <div class="col">
+            <%= link_to "#", class:"btn btn-sm btn-primary", style: "width:160px" do %>
+              <i class="bi bi-person"></i>
+              Administrar cuenta
+            <% end %>
+          </div>
+          <div class="col">
+            <%= link_to "#", class:"btn btn-sm btn-primary", data: { turbo_method: :delete } do %>
+              <i class="bi bi-box-arrow-left"></i>
+              Cerrar sesión
+            <% end %>
+          </div>
         </div>
-
-        <div class="col">
-          <%= link_to "#", class:"btn btn-sm btn-primary", data: { turbo_method: :delete } do %>
-            <i class="bi bi-box-arrow-left"></i>
-            Cerrar sesión
-          <% end %>
+      </form>
+    <% else %>
+      <form class="d-flex">
+        <div class="row">
+          <div class="col text-right">
+            <%= link_to new_user_session_path, class:"btn btn-sm btn-primary" do %>
+              <i class="bi bi-box-arrow-left"></i>
+              Iniciar sesión
+            <% end %>
+          </div>
         </div>
-      </div>
-    </form>
-    <%# ELSE %>
-    <form class="d-flex">
-      <div class="row">
-        <div class="col mx-4">
-          <%= link_to "#", class:"btn btn-sm btn-primary" do %>
-            <i class="bi bi-box-arrow-left"></i>
-            Iniciar sesión
-          <% end %>
-        </div>
-      </div>
-    </form>
-    <%# IF END %>
+      </form>
+    <% end %>
   </div>
 </div>
 </nav>
