@@ -13,13 +13,13 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
-              <%= link_to "#", class:"dropdown-item" do %>
+              <%= link_to new_project_path, class:"dropdown-item" do %>
                 <i class="bi bi-journal-plus"></i>
                 Agregar nuevo proyecto
               <% end %>
             </li>
             <li>
-              <%= link_to "#", class:"dropdown-item" do %>
+              <%= link_to projects_path, class:"dropdown-item" do %>
                 <i class="bi bi-journal"></i>
                 Listar proyectos
               <% end %>
@@ -32,13 +32,13 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
-              <%= link_to "#", class:"dropdown-item" do %>
+              <%= link_to new_investigator_path, class:"dropdown-item" do %>
                 <i class="bi bi-person-plus"></i>
                 <span>Agregar nuevo investigador</span>
               <% end %>
             </li>
             <li>
-              <%= link_to "#", class:"dropdown-item" do %>
+              <%= link_to investigators_path, class:"dropdown-item" do %>
                 <i class="bi bi-person"></i>
                 <span>Listar investigadores</span>
               <% end %>

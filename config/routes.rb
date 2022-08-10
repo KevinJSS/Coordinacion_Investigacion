@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  #Resources
   resources :investigators
   resources :projects
 
