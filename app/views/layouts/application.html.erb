@@ -5,15 +5,20 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "custom-css.css" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
-  <body>
+  <body class="d-flex flex-column">
     <%= render "shared/navigation" %>
-    <div class="row justify-content-md-center">
-      <div class="col-md-8 mt-4">
+
+    <div id="page-content" class="row justify-content-md-center">
+      <div class="col-md-8 mt-5">
+        <%= render "shared/devise_alerts" %>
         <%= yield %>
       </div>
     </div>
+
+    <%= render "shared/footer" %>
   </body>
 </html>
