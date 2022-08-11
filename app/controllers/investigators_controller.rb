@@ -65,6 +65,6 @@ class InvestigatorsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def investigator_params
-      params.require(:investigator).permit(:id_card, :first_name, :last_name, :emial)
+      params.require(:investigator).permit(:id_card, :first_name, :last_name, :email)
     end
 end

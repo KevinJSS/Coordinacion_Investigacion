@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: %i[ show edit update destroy ]
+  before_action :set_investigators, only: %i[ new edit create update ]
 
   # GET /projects or /projects.json
   def index
@@ -12,7 +13,12 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
-    @project = Project.new
+    if @investigators.empty?
+      flash[:notice] = "No se han agregado investigadores a la base de datos. Para agregar un proyecto, debe agregar al menos un investigador."
+      redirect_to new_investigator_path
+    else
+      @project = Project.new
+    end
   end
 
   # GET /projects/1/edit
@@ -21,10 +27,13 @@ class ProjectsController < ApplicationController
 
   # POST /projects or /projects.json
   def create
-    @project = Project.new(project_params)
+    get_investigators_passed_in_params
+    create_project
 
     respond_to do |format|
       if @project.save
+        add_investigators_to_project
+
         format.html { redirect_to project_url(@project), notice: "Project was successfully created." }
         format.json { render :show, status: :created, location: @project }
       else
@@ -58,13 +67,42 @@ class ProjectsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_project
-      @project = Project.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def project_params
-      params.require(:project).permit(:code, :name)
+  # Use callbacks to share common setup or constraints between actions.
+  def set_project
+    @project = Project.find(params[:id])
+  end
+
+  def set_investigators
+    @investigators = Investigator.all
+  end
+
+  # Only allow a list of trusted parameters through.
+  def create_project
+    @project = Project.new
+    @project.code = params[:project][:code]
+    @project.name = params[:project][:name]
+  end
+
+  def add_investigators_to_project
+    @investigators_to_add.each do |investigator| 
+      if investigator != nil then
+        if investigator == @investigators_to_add.first then 
+          @project_investigators = ProjectInvestigator.create(project_id: @project.id, investigator_id: investigator.id, role: 0)
+        else
+           @project_investigators = ProjectInvestigator.create(project_id: @project.id, investigator_id: investigator.id, role: 1) 
+        end 
+      end
     end
+  end
+
+  def get_investigators_passed_in_params
+    @investigators_to_add = Array.new
+    principal_investigator_id_card = params[:project][:principal_investigator].split("-")[0]
+    principal_investigator = Investigator.find_by(id_card: principal_investigator_id_card)
+    @investigators_to_add << principal_investigator
+    params[:project][:investigators].each { |investigator|
+      if investigator[1] == "1" then @investigators_to_add << Investigator.find(investigator[0]) end
+    }
+  end
 end

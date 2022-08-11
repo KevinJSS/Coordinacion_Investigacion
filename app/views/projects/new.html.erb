@@ -1,9 +1,24 @@
-<h1>New project</h1>
+<% if @project.errors.any? %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <h2 class="alert-heading"><%= pluralize(@project.errors.count, "error") %> prohibited this projects from being saved:</h2>
+    <ul>
+      <% @project.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
 
-<%= render "form", project: @project %>
-
+<div class="p-5 border border-2 rounded-3 shadow-sm">
+  <div class="row mb-3 text-center">
+    <h1 class=>Nuevo proyecto</h1>
+  </div>
+  <div class="row px-5">
+    <%= render "projects/project_form/form", project: @project, investigators: @investigators %>
+  </div>
+</div>
 <br>
-
-<div>
-  <%= link_to "Back to projects", projects_path %>
+<div class="text-center mb-4">
+  <%= link_to "[ Regresar a la lista de proyectos ]", projects_path, class: "text-decoration-none" %>
 </div>

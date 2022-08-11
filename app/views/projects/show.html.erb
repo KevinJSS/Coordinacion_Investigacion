@@ -1,8 +1,11 @@
+<h1 class="mt-4">Información del proyecto</h1>
+<hr>
+
 <%= render @project %>
 
 <div>
-  <%= link_to "Edit this project", edit_project_path(@project) %> |
-  <%= link_to "Back to projects", projects_path %>
+  <%= link_to "Edit this project", edit_project_path(@project), class: "my-4" %> |
+  <%= link_to "Back to projects", projects_path, class: "my-4" %>
 
-  <%= button_to "Destroy this project", @project, method: :delete %>
+  <%= button_to "Destroy this project", @project, method: :delete, class: "my-2" %>
 </div>

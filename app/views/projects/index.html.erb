@@ -1,14 +1,28 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Projects</h1>
-
-<div id="projects">
-  <% @projects.each do |project| %>
-    <%= render project %>
-    <p>
-      <%= link_to "Show this project", project %>
-    </p>
-  <% end %>
+<div class="row justify-content-md-center d-flex align-items-center mb-3">
+  <div class="col-md-6">
+    <h1 class="mt-4">Listado de Proyectos</h1>
+  </div>
+  <div class="col-md-6 mt-4 text-end">
+    <%= link_to new_project_path, class:"btn btn-primary" do %>
+      <i class="bi bi-journal-plus"></i>
+      Agregar nuevo proyecto
+    <% end %>
+  </div>
 </div>
 
-<%= link_to "New project", new_project_path %>
+<hr>
+
+<div id="projects">
+  <% if @projects.length != 0 %>
+    <% @projects.each do |project| %>
+      <%= render project %>
+      <p>
+        <%= link_to "Show this project", project %>
+      </p>
+    <% end %>
+  <% else %>
+    <div class="text-center mt-4">
+      <p style="font-size:18px; color:grey;"><i class="bi bi-info-circle-fill"></i> &nbsp; No hay proyectos para listar . . .</p>
+    </div>
+  <% end %>
+</div>

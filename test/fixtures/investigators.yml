@@ -4,10 +4,10 @@ one:
   id_card: MyString
   first_name: MyString
   last_name: MyString
-  emial: MyString
+  email: MyString
 
 two:
   id_card: MyString
   first_name: MyString
   last_name: MyString
-  emial: MyString
+  email: MyString

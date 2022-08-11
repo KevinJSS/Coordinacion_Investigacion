@@ -14,7 +14,7 @@ class InvestigatorsTest < ApplicationSystemTestCase
     visit investigators_url
     click_on "New investigator"
 
-    fill_in "Emial", with: @investigator.emial
+    fill_in "email", with: @investigator.email
     fill_in "First name", with: @investigator.first_name
     fill_in "Id card", with: @investigator.id_card
     fill_in "Last name", with: @investigator.last_name
@@ -28,7 +28,7 @@ class InvestigatorsTest < ApplicationSystemTestCase
     visit investigator_url(@investigator)
     click_on "Edit this investigator", match: :first
 
-    fill_in "Emial", with: @investigator.emial
+    fill_in "email", with: @investigator.email
     fill_in "First name", with: @investigator.first_name
     fill_in "Id card", with: @investigator.id_card
     fill_in "Last name", with: @investigator.last_name

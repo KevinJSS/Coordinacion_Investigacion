@@ -17,7 +17,7 @@ class InvestigatorsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create investigator" do
     assert_difference("Investigator.count") do
-      post investigators_url, params: { investigator: { emial: @investigator.emial, first_name: @investigator.first_name, id_card: @investigator.id_card, last_name: @investigator.last_name } }
+      post investigators_url, params: { investigator: { email: @investigator.email, first_name: @investigator.first_name, id_card: @investigator.id_card, last_name: @investigator.last_name } }
     end
 
     assert_redirected_to investigator_url(Investigator.last)
@@ -34,7 +34,7 @@ class InvestigatorsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update investigator" do
-    patch investigator_url(@investigator), params: { investigator: { emial: @investigator.emial, first_name: @investigator.first_name, id_card: @investigator.id_card, last_name: @investigator.last_name } }
+    patch investigator_url(@investigator), params: { investigator: { email: @investigator.email, first_name: @investigator.first_name, id_card: @investigator.id_card, last_name: @investigator.last_name } }
     assert_redirected_to investigator_url(@investigator)
   end
 
