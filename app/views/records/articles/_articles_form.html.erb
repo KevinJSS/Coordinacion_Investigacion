@@ -1,0 +1,35 @@
+<%= form_with(model: record) do |f| %>
+  <div data-controller="nested-form" >
+    <h4>Artículos a agregar:</h4>
+    <div>
+      <template data-nested-form-target="template">
+        <%= f.fields_for :articles, Article.new, child_index: "TEMPLATE_RECORD" do |article| %>
+          <%= render "records/articles/articles_fields", f: article, record: record %>
+        <% end %>
+      </template>
+    </div>
+    <div class="container m-3">
+      <div data-nested-form-target="add_item">
+        <div data-nested-form-target="add_item">
+          <%= link_to "#", data: { action: "nested-form#add_association" }, class:"btn btn-sm btn-primary" do %>
+            <i class="bi bi-plus"></i>
+            Agregar artículo
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="container m-3">
+      <%= f.fields_for :articles do |article| %>
+        <%= render "records/articles/articles_fields", f: article, record: record %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row pt-4">
+    <div class="col text-center">
+      <%= button_tag(:class => "btn btn-primary") do %>
+        <i class="bi bi-check-lg"></i>
+        Guardar
+      <% end %>
+    </div>
+  </div>
+<% end %>
