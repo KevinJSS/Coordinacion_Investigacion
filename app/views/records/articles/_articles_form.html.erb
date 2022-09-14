@@ -1,27 +1,35 @@
 <%= form_with(model: record) do |f| %>
   <div data-controller="nested-form" >
-    <h4>Artículos a agregar:</h4>
+    <div class="row justify-content-md-center d-flex align-items-center mb-3">
+      <div class="col-6 font-weight-bold">
+        <h4>ARTÍCULOS</h4>
+      </div>
+      <div class="col-6 mt-2 text-end" data-nested-form-target="add_item">
+        <%= link_to "#", data: { action: "nested-form#add_association" }, class:"btn btn-sm btn-primary px-3" do %>
+          <i class="bi bi-plus-circle-dotted"></i>
+          Artículo
+        <% end %>
+      </div>
+    </div>
+    <hr data-nested-form-target="divider">
     <div>
       <template data-nested-form-target="template">
         <%= f.fields_for :articles, Article.new, child_index: "TEMPLATE_RECORD" do |article| %>
-          <%= render "records/articles/articles_fields", f: article, record: record %>
+          <div>
+            <div class="p-1 border rounded row d-flex" style="margin: 0 .1rem 0 .1rem" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              <div class="col-7">
+                <span class="mx-2">Articulo 1</span>
+              </div>
+              <div class="col-5 text-end">
+                <i class="bi bi-caret-down-fill"></i>
+              </div>
+            </div>
+            <div class="collapse mt-3 px-2" id="collapseExample">
+              <%= render "records/articles/articles_fields", f: article, record: record %>
+            </div>
+          </div>
         <% end %>
       </template>
-    </div>
-    <div class="container m-3">
-      <div data-nested-form-target="add_item">
-        <div data-nested-form-target="add_item">
-          <%= link_to "#", data: { action: "nested-form#add_association" }, class:"btn btn-sm btn-primary" do %>
-            <i class="bi bi-plus"></i>
-            Agregar artículo
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="container m-3">
-      <%= f.fields_for :articles do |article| %>
-        <%= render "records/articles/articles_fields", f: article, record: record %>
-      <% end %>
     </div>
   </div>
   <div class="row pt-4">
