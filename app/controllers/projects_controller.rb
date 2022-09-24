@@ -68,6 +68,10 @@ class ProjectsController < ApplicationController
 
   private
 
+  def project_params
+    params.require(:project).permit(:code, :name)
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_project
     @project = Project.find(params[:id])
@@ -85,13 +89,13 @@ class ProjectsController < ApplicationController
   end
 
   def add_investigators_to_project
-    @investigators_to_add.each do |investigator| 
-      if investigator != nil then
-        if investigator == @investigators_to_add.first then 
+    @investigators_to_add.each do |investigator|
+      if investigator != nil
+        if investigator == @investigators_to_add.first
           @project_investigators = ProjectInvestigator.create(project_id: @project.id, investigator_id: investigator.id, role: 0)
         else
-           @project_investigators = ProjectInvestigator.create(project_id: @project.id, investigator_id: investigator.id, role: 1) 
-        end 
+          @project_investigators = ProjectInvestigator.create(project_id: @project.id, investigator_id: investigator.id, role: 1)
+        end
       end
     end
   end

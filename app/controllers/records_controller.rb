@@ -22,7 +22,7 @@ class RecordsController < ApplicationController
 
   # POST /records or /records.json
   def create
-    byebug 
+    byebug
     @record = Record.new(record_params)
     articles = recieve_articles
     respond_to do |format|
@@ -61,24 +61,24 @@ class RecordsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_record
-      @record = Record.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def record_params
-      params.require(:record).permit(:number, :date, :file, articles: [:_destroy, :number, :record_id, :project_id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_record
+    @record = Record.find(params[:id])
+  end
 
-    def set_projects
-      @projects = Project.all
-    end
+  # Only allow a list of trusted parameters through.
+  def record_params
+    params.require(:record).permit(:number, :date, :file, articles: [:_destroy, :number, :record_id, :project_id])
+  end
 
-    def recieve_articles
-      if params[:record]
-        return params[:record][:articles_attributes].values
-      end
+  def set_projects
+    @projects = Project.all
+  end
+
+  def recieve_articles
+    if params[:record]
+      return params[:record][:articles_attributes].values
     end
+  end
 end
-

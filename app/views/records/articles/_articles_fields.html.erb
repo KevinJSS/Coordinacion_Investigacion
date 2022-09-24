@@ -20,12 +20,21 @@
           <% end %>
         </div>
         <div class="mx-1">
-          <%= link_to  "#", class:"btn btn-sm btn-primary" do %>
+          <%= link_to  "#", data: { action: "click->nested-form#add_agreements" }, class:"btn btn-sm btn-primary" do %>
             <i class="bi bi-plus-circle-dotted"></i>
             <span style="text-wight:bold;">Acuerdo</span>
           <% end %>
         </div>
       </div>
     </div>
+    <%# Agreement section %>
+    <span data-nested-form-target="reference"></span> <!-- Used as a reference point to add agreements at the end -->
+    <template data-nested-form-target="agr-template">
+      <%= f.fields_for :agreements, Agreement.new, child_index: "TEMPLATE_RECORD" do |agreement| %>
+        <div>
+          <%= render "records/agreements/agreements_fields", f: agreement, record: record, article: @article %>
+        </div>
+      <% end %>
+    </template>
   </div>
 </div>

@@ -1,0 +1,32 @@
+<div class="nested-fields">
+  <div class="row">
+    <%= f.hidden_field :_destroy %>
+    <%# <% f.hidden_field :article_id, value: article.id %>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <%= f.label :agreementNumber, "N° Acuerdo", style: "display: block; font-weight:bold;" %>
+      <%= f.text_field :agreementNumber, class: "form-control", placeholder: "Número" %>
+    </div>
+    <div class="col-6">
+      <%= f.label :description, "Descripción", style: "display: block; font-weight:bold;" %>
+      <%= f.text_field :description, class: "form-control", placeholder: "Ingresa una descripción . . ." %>
+    </div>
+    <div class="col-2">
+      <div class="btn-group mt-4">
+        <div>
+          <%= link_to  "#", data: { action: "click->nested-form#remove_association" }, class:"btn btn-sm btn-danger" do %>
+            <i class="bi bi-trash"></i>
+          <% end %>
+        </div>
+        <div class="mx-1">
+          <%= link_to  "#", class:"btn btn-sm btn-primary" do %>
+            <i class="bi bi-plus-circle-dotted"></i>
+            <span style="text-wight:bold;">TRAMITE</span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <%# Transaction section %>
+  </div>
+</div>
