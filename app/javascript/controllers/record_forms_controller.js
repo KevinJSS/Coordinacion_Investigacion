@@ -23,17 +23,20 @@ export default class extends Controller {
     content += "</div>";
 
     this.art_referenceTarget.insertAdjacentHTML("beforeend", content);
+
+    var art_input = document.getElementById(`ART${this.articleCounter}`).querySelector("#ARTICLE_NUMBER");
+    art_input.value = `Artículo ${this.articleCounter}`;
   }
 
   remove_article(event) {
     event.preventDefault();
-    console.log(event.path[5].id);
-    document.getElementById(event.path[5].id).remove();
+    var article_div_id = (event.path[5].id === "" ? event.path[6].id : event.path[5].id);
+    document.getElementById(article_div_id).remove();
   }
 
   add_agreement(event) {
     event.preventDefault();
-    var article_div_id = (event.path[5].id === "" ? event.path[6].id : event.path[5].id);
+    var article_div_id = this.#get_div_id(event);
     var reference = document.getElementById(article_div_id).querySelector(".agr-reference");
 
     var content = `<div class="mt-4" id="${article_div_id}-AGR${reference.children.length + 1}">`;
@@ -54,9 +57,13 @@ export default class extends Controller {
     agr_input.value = `${article_div_id}. Acuerdo ${reference.children.length}`;
   }
 
-  remove_agreement(event) {1
+  remove_agreement(event) {
     event.preventDefault();
-    var agr_div_id = (event.path[5].id === "" ? event.path[6].id : event.path[5].id);
-    document.getElementById(agr_div_id).remove();// FIX!! Considerar el hecho del children.length para el proximo elemento que se agrega.
+    var agreement_div_id = this.#get_div_id(event);
+    document.getElementById(agreement_div_id).remove();// FIX!! Considerar el hecho del children.length para el proximo elemento que se agrega.
+  }
+
+  #get_div_id(event) {
+    return event.path[5].id === "" ? event.path[6].id : event.path[5].id
   }
 }
