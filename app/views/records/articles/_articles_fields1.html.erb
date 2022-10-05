@@ -1,0 +1,41 @@
+<div class="nested-fields">
+  <div class="row">
+    <%= f.hidden_field :_destroy %>
+    <% f.hidden_field :record_id, value: record.id %>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <%= f.label :number, "N° Artículo", style: "display: block; font-weight:bold;" %>
+      <%= f.text_field :number, class: "form-control", placeholder: "Número" %>
+    </div>
+    <div class="col-6">
+      <%= f.label :project_id, "Proyecto", style: "display: block; font-weight:bold;" %>
+      <%= f.select :project_id, options_for_select(@projects.all.map { |project| [project.code + " - " + project.name, project.id] }), {}, class: "form-select" %>
+    </div>
+    <div class="col-2">
+      <div class="btn-group mt-4">
+        <div>
+          <%= link_to "#", data: { action: "click->nested-form#remove_association" }, class: "btn btn-sm btn-danger" do %>
+            <i class="bi bi-trash"></i>
+          <% end %>
+        </div>
+        <div class="mx-1">
+          <%= link_to "#", data: { action: "click->nested-form#add_agreements" }, class: "btn btn-sm btn-primary" do %>
+            <i class="bi bi-plus-circle-dotted"></i>
+            <span style="text-wight:bold;">Acuerdo</span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% # Agreement section %>
+    <h6 data-nested-form-target="agr_header" class="my-3 mx-4">ACUERDOS</h6>
+    <span data-nested-form-target="agr_reference"></span> <!-- Used as a reference point to add agreements at the end -->
+    <template data-nested-form-target="agr_template">
+      <%= f.fields_for :agreements, Agreement.new, child_index: "TEMPLATE_RECORD" do |agreement| %>
+        <div>
+          <%= render "records/agreements/agreements_fields", f: agreement, record: record, article: @article %>
+        </div>
+      <% end %>
+    </template>
+  </div>
+</div>
