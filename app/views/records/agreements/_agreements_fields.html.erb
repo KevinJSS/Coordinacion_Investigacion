@@ -1,18 +1,24 @@
 
 <div class="row d-flex align-items-center agreement-fields" style="margin-left:1rem;">
-  <div class="col-6">
-      <p id="AGREEMENT_NUMBER">AGREEMENT</p>
-  </div>
-  
-  <div class="col-6 text-end">
-      <div class="btn-group">
-          <%= link_to "#", data: { action: "click->record-forms#remove_agreement" }, class: "btn btn-sm btn-danger" do %>
-              <i class="bi bi-trash"></i>
-          <% end %>
-          <%= link_to "#", class: "btn btn-sm btn-primary" do %>
-              <i class="bi bi-plus-circle-dotted"></i>
-              <span class="fw-bold">Tramite</span>
-          <% end %>
-      </div>
-  </div>
+    <div class="col-3">
+        <label class="fw-bold mb-1">N° de Acuerdo</label>
+        <input type="text" class="form-control text-center bg-light" id="AGREEMENT_NUMBER" placeholder="AGREEMENT" disabled />
+    </div>
+
+    <div class="col-7">
+        <label class="fw-bold mb-1">Descripción</label>
+        <input type="text" class="form-control" placeholder="Ingrese una descripción ..." />
+    </div>
+    
+    <div class="col-2 text-end">
+        <div class="btn-group mt-4">
+            <%= link_to "#", data: { action: "click->record-forms#remove_agreement" }, class: "btn btn-sm btn-danger py-2" do %>
+                <i class="bi bi-trash"></i>
+            <% end %>
+            <%= link_to "#", class: "btn btn-sm btn-primary py-2" do %>
+                <i class="bi bi-plus-circle-dotted"></i>
+                <span class="fw-bold">Tramite</span>
+            <% end %>
+        </div>
+    </div>
 </div>
