@@ -10,5 +10,8 @@ application.register("hello", HelloController)
 import NestedFormController from "./nested_form_controller"
 application.register("nested-form", NestedFormController)
 
+import RecordFormsController from "./record_forms_controller"
+application.register("record-forms", RecordFormsController)
+
 import SelectController from "./select_controller"
 application.register("select", SelectController)

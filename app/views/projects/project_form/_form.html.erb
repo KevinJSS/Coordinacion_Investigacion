@@ -1,14 +1,13 @@
 <div class="px-3 py-1">
   <%= form_with(model: project) do |form| %>
     <div class="row form-group">
-      <h5>Datos del proyecto</h5>
-      <div class="mt-4">
+      <div class="">
         <%= render 'projects/project_form/project_data_form', project: @project, form: form %>
       </div>
     </div>
-    <hr>
     <div data-controller="select" data-select-hidden-class="hidden" class="row">
-      <h5 class="mt-2">Agregar investigadores al proyecto</h5>
+      <h4 class="mt-4">AGREGAR INVESTIGADORES</h4>
+      <hr>
       <%= render 'projects/project_form/add_investigator_form', project: @project, investigators: @investigators, form: form %>
     </div>
     <div class="row text-center mt-5">

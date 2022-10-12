@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  resources :agreements
   resources :records
-  devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
   resources :investigators
   resources :projects
+  devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
 
   #Root page
   root "pages#home"

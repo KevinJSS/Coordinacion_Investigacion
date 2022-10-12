@@ -1,35 +1,26 @@
-<%= form_with(model: record) do |f| %>
-  <div data-controller="nested-form" >
-    <h4>Artículos a agregar:</h4>
-    <div>
-      <template data-nested-form-target="template">
-        <%= f.fields_for :articles, Article.new, child_index: "TEMPLATE_RECORD" do |article| %>
-          <%= render "records/articles/articles_fields", f: article, record: record %>
-        <% end %>
-      </template>
-    </div>
-    <div class="container m-3">
-      <div data-nested-form-target="add_item">
-        <div data-nested-form-target="add_item">
-          <%= link_to "#", data: { action: "nested-form#add_association" }, class:"btn btn-sm btn-primary" do %>
-            <i class="bi bi-plus"></i>
-            Agregar artículo
-          <% end %>
+<%= form_with(model: record) do |form| %>
+    
+    <div data-controller="record-forms">
+        <div class="row d-flex align-items-center mb-3">
+          <div class="col-6 mt-1 font-weight-bold">
+            <h4>ARTÍCULOS</h4>
+          </div>
+          <div class="col-6 text-end">
+            <%= link_to "#", data: { action: "record-forms#add_article" }, class: "btn btn-sm btn-primary px-3" do %>
+              <i class="bi bi-plus-circle-dotted"></i>
+              ARTICULO
+            <% end %>
+          </div>
         </div>
-      </div>
+        <hr>
+        <div data-record-forms-target="art_reference"></div> <!-- Used as a reference point to add articles at the end -->
+
+        <template data-record-forms-target="art_template">
+            <%= form.fields_for :articles, Article.new do |article| %>
+                <div>
+                <%= render "records/articles/articles_fields", form: article, record: record %>
+                </div>
+            <% end %>
+        </template>
     </div>
-    <div class="container m-3">
-      <%= f.fields_for :articles do |article| %>
-        <%= render "records/articles/articles_fields", f: article, record: record %>
-      <% end %>
-    </div>
-  </div>
-  <div class="row pt-4">
-    <div class="col text-center">
-      <%= button_tag(:class => "btn btn-primary") do %>
-        <i class="bi bi-check-lg"></i>
-        Guardar
-      <% end %>
-    </div>
-  </div>
 <% end %>

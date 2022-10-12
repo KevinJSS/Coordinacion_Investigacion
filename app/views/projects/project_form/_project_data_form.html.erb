@@ -1,16 +1,10 @@
-<div class="row mb-3 text-center">
-  <div class="col-2">
-    <%= form.label "Código", style: "display: block"%>
+<div class="row d-flex mb-4">
+  <div class="col-6">
+    <%= form.label "Código del Proyecto", style: "display: block", class: "fw-bold mb-2"%>
+    <%= form.text_field :code, class: "form-control", placeholder: "Código"%>
   </div>
-  <div class="col-10">
-    <%= form.text_field :code, class: "form-control"%>
-  </div>
-</div>
-<div class="row mb-3 text-center">
-  <div class="col-2">
-    <%= form.label "Nombre", style: "display: block"%>
-  </div>
-  <div class="col-10">
-    <%= form.text_field :name, class: "form-control"%>
+  <div class="col-6">
+    <%= form.label "Nombre del Proyecto", style: "display: block", class: "fw-bold mb-2"%>
+    <%= form.text_field :name, class: "form-control", placeholder: "Nombre"%>
   </div>
 </div>

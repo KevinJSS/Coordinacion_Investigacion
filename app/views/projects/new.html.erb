@@ -11,14 +11,15 @@
 <% end %>
 
 <div class="p-5 border border-2 rounded-3 shadow-sm">
-  <div class="row mb-3 text-center">
-    <h1 class=>Nuevo proyecto</h1>
+  <div class="row mb-3 px-5">
+    <h1 class=>NUEVO PROYECTO</h1>
+    <hr>
   </div>
-  <div class="row px-5">
+  <div class="row mb-3 px-5">
     <%= render "projects/project_form/form", project: @project, investigators: @investigators %>
   </div>
 </div>
 <br>
-<div class="text-center mb-4">
+<div class="text-center mt-3 mb-5">
   <%= link_to "[ Regresar a la lista de proyectos ]", projects_path, class: "text-decoration-none" %>
 </div>
