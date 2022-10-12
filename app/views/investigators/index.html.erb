@@ -1,14 +1,23 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Investigators</h1>
+<div class="row d-flex align-items-center mb-3">
+  <div class="col-md-6 mt-4">
+    <h1>INVESTIGADORES</h1>
+  </div>
+  <div class="col-md-6 mt-3 text-end">
+    <%= link_to new_investigator_path, class:"btn btn-primary" do %>
+      <i class="bi bi-person-plus"></i>&nbsp;&nbsp;
+      Agregar nuevo investigador
+    <% end %>
+  </div>
+</div>
+<hr>
 
 <div id="investigators">
   <% @investigators.each do |investigator| %>
-    <%= render investigator %>
-    <p>
-      <%= link_to "Show this investigator", investigator %>
-    </p>
+    <div class="mb-5 mx-2">
+      <%= render investigator %>
+      <p>
+        <%= link_to "Ver detalles", investigator %>
+      </p>
+    </div>
   <% end %>
 </div>
-
-<%= link_to "New investigator", new_investigator_path %>

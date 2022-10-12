@@ -1,7 +1,9 @@
-<div class="container col-10 border rounded shadow p-5">
+<div class="container col-12 border rounded shadow p-5">
   <div class="container col-8">
-    <h2>INICIO DE SESIÓN</h2>
-    <hr>
+    <div class="mb-4">
+      <h2>INICIO DE SESIÓN</h2>
+      <hr>
+    </div>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field mb-3 mt-4">
         <%= f.label :email %><br />

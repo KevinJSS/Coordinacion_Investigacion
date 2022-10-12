@@ -4,7 +4,7 @@
       <% form.hidden_field :record_id, value: record.id %>
     </div>
 
-    <div class="col-4">
+    <div class="col-3">
       <%= form.label :number, "N° Artículo", style: "display: block; font-weight:bold;" %>
       <%= form.text_field :number, class: "form-control", placeholder: "Número", id: "ARTICLE_NUMBER" %>
     </div>
@@ -14,7 +14,7 @@
       <%= form.select :project_id, options_for_select(@projects.all), {}, class: "form-select" %>
     </div>
 
-    <div class="col-2 text-end mt-3">
+    <div class="col-3 text-end mt-3">
         <div class="btn-group">
             <%= link_to "#", data: { action: "click->record-forms#remove_article" }, class: "btn btn-sm btn-danger py-2" do %>
                 <i class="bi bi-trash"></i>

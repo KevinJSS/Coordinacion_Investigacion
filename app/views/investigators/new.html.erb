@@ -1,9 +1,25 @@
-<h1>New investigator</h1>
+<% if @investigator.errors.any? %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <h2 class="alert-heading"><%= pluralize(@investigator.errors.count, "error") %> prohibited this investigator from being saved:</h2>
+    <ul>
+      <% @investigator.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
 
-<%= render "form", investigator: @investigator %>
-
+<div class="p-5 border border-2 rounded-3 shadow-sm">
+  <div class="row px-5">
+    <h1>NUEVO INVESTIGADOR</h1>
+    <hr>
+  </div>
+  <div class="row px-5">
+    <%= render "form", investigator: @investigator %>
+  </div>
+</div>
 <br>
-
-<div>
-  <%= link_to "Back to investigators", investigators_path %>
+<div class="text-center mt-3 mb-4">
+  <%= link_to "[ Regresar a la lista de investigadores ]", investigators_path %>
 </div>
