@@ -1,6 +1,11 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="py-2" style="background-color:#F3F3F3;">
+  <%= image_tag "ucr.svg", alt: "Logo", class: "px-2" %>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light py-2 ucr-blue">
   <div class="container-fluid">
-    <%= link_to "COOINV", root_path, class: "navbar-brand", id: "logo", rel: "prev" %>
+    <%= link_to root_path, class: "navbar-brand text-light", id: "logo", rel: "prev" do %>
+      <h2 class="fw-bold"><span style="color: #F7921F;">COO</span>INV</h2>
+    <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,18 +13,18 @@
       <% if current_user %>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Proyectos
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li>
-                <%= link_to new_project_path, class:"dropdown-item" do %>
+                <%= link_to new_project_path, class: "dropdown-item" do %>
                   <i class="bi bi-journal-plus"></i>
                   Agregar nuevo proyecto
                 <% end %>
               </li>
               <li>
-                <%= link_to projects_path, class:"dropdown-item" do %>
+                <%= link_to projects_path, class: "dropdown-item" do %>
                   <i class="bi bi-journal"></i>
                   Listar proyectos
                 <% end %>
@@ -27,18 +32,18 @@
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Investigadores
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li>
-                <%= link_to new_investigator_path, class:"dropdown-item" do %>
+                <%= link_to new_investigator_path, class: "dropdown-item" do %>
                   <i class="bi bi-person-plus"></i>
                   <span>Agregar nuevo investigador</span>
                 <% end %>
               </li>
               <li>
-                <%= link_to investigators_path, class:"dropdown-item" do %>
+                <%= link_to investigators_path, class: "dropdown-item" do %>
                   <i class="bi bi-person"></i>
                   <span>Listar investigadores</span>
                 <% end %>
@@ -46,18 +51,18 @@
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Actas
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li>
-                <%= link_to new_record_path, class:"dropdown-item" do %>
+                <%= link_to new_record_path, class: "dropdown-item" do %>
                   <i class="bi bi-person-plus"></i>
                   <span>Agregar nueva acta</span>
                 <% end %>
               </li>
               <li>
-                <%= link_to records_path, class:"dropdown-item" do %>
+                <%= link_to records_path, class: "dropdown-item" do %>
                   <i class="bi bi-person"></i>
                   <span>Listar actas</span>
                 <% end %>
@@ -71,26 +76,26 @@
       <form class="d-flex">
         <div class="row">
           <div class="col">
-            <%= link_to edit_user_registration_path, class:"btn btn-sm btn-primary", style: "width:160px" do %>
-              <i class="bi bi-person"></i>
-              Administrar cuenta
+            <%= link_to edit_user_registration_path, class: "btn btn-sm ucr-button", style: "width:175px" do %>
+              <%# <i class="bi bi-person"></i> %>
+              ADMINISTRAR CUENTA
             <% end %>
           </div>
           <div class="col">
-            <%= link_to destroy_user_session_path, class:"btn btn-sm btn-primary", data: { turbo_method: :delete } do %>
-              <i class="bi bi-box-arrow-left"></i>
-              Cerrar sesión
+            <%= link_to destroy_user_session_path, class: "btn btn-sm ucr-button", data: { turbo_method: :delete } do %>
+              <%# <i class="bi bi-box-arrow-left"></i> %>
+              CERRAR SESIÓN
             <% end %>
           </div>
         </div>
       </form>
     <% else %>
-      <form class="d-flex">
+      <form class="d-flex text-end">
         <div class="row">
           <div class="col text-right">
-            <%= link_to new_user_session_path, class:"btn btn-sm btn-primary" do %>
-              <i class="bi bi-box-arrow-left"></i>
-              Iniciar sesión
+            <%= link_to new_user_session_path, class: "btn btn-sm text-light ucr-button" do %>
+              <%# <i class="bi bi-box-arrow-left"></i> %>
+              USUARIOS REGISTRADOS
             <% end %>
           </div>
         </div>
