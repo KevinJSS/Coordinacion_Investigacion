@@ -11,13 +11,20 @@
 </div>
 <hr>
 
-<div id="investigators">
-  <% @investigators.each do |investigator| %>
-    <div class="mb-5 mx-2">
-      <%= render investigator %>
-      <p>
-        <%= link_to "Ver detalles", investigator %>
-      </p>
+
+<% if @investigators.length != 0 %>
+    <div id="investigators" class="mt-4">
+      <% @investigators.each do |investigator| %>
+        <div class="mb-5 mx-2">
+          <%= render investigator %>
+          <p>
+            <%= link_to "Ver detalles", investigator %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="text-center mt-4">
+      <p style="font-size:18px; color:grey;"><i class="bi bi-info-circle-fill"></i> &nbsp; No hay investigadores para listar . . .</p>
     </div>
   <% end %>
-</div>
