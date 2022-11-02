@@ -10,7 +10,13 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    super
+    @user = User.find_by(email: params[:user][:email])
+    if @user == nil || !@user.valid_password?(params[:user][:password])
+      flash[:alert] = "Hubo un error con tu correo o contraseña. Por favor intenta de nuevo."
+      redirect_to new_user_session_path
+    else 
+      super
+    end
   end
 
   # DELETE /resource/sign_out
